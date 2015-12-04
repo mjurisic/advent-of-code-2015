@@ -9,32 +9,10 @@ var visited = [{position: {x: 0, y: 0}, visits: 1}];
 for (var i = 0; i < input.length; i++) {
     var currentHouse;
     if (i % 2 == 0) {
-        if (input.charAt(i) == '^') {
-            santaPosition.y = santaPosition.y + 1;
-        }
-        if (input.charAt(i) == 'v') {
-            santaPosition.y = santaPosition.y - 1;
-        }
-        if (input.charAt(i) == '>') {
-            santaPosition.x = santaPosition.x + 1;
-        }
-        if (input.charAt(i) == '<') {
-            santaPosition.x = santaPosition.x - 1;
-        }
+        santaPosition = processMove(santaPosition, input.charAt(i));
         currentHouse = santaPosition;
     } else {
-        if (input.charAt(i) == '^') {
-            roboPosition.y = roboPosition.y + 1;
-        }
-        if (input.charAt(i) == 'v') {
-            roboPosition.y = roboPosition.y - 1;
-        }
-        if (input.charAt(i) == '>') {
-            roboPosition.x = roboPosition.x + 1;
-        }
-        if (input.charAt(i) == '<') {
-            roboPosition.x = roboPosition.x - 1;
-        }
+        roboPosition = processMove(roboPosition, input.charAt(i));
         currentHouse = roboPosition;
     }
 
@@ -51,4 +29,20 @@ for (var i = 0; i < input.length; i++) {
     }
 }
 
+function processMove(inputPosition, direction) {
+    var position = {x:inputPosition.x, y:inputPosition.y};
+    if (direction == '^') {
+        position.y = position.y + 1;
+    }
+    if (direction == 'v') {
+        position.y = position.y - 1;
+    }
+    if (direction == '>') {
+        position.x = position.x + 1;
+    }
+    if (direction == '<') {
+        position.x = position.x - 1;
+    }
+    return position;
+}
 console.log(visited.length);
