@@ -1,0 +1,4 @@
+1 -> y
+2 -> x
+NOT y -> k
+x OR y -> c
