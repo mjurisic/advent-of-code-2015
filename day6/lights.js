@@ -10,9 +10,9 @@ for (var i = 0; i < 1000; i++) {
         lights[i][j] = 0;
     }
 }
-
+var totalBrightness = 0;
 rl.on('line', function (line) {
-    var totalBrightness = 0;
+
 
     var myRegexp = /\s+(\d+),(\d+) through (\d+),(\d+)/;
     var match = myRegexp.exec(line);
@@ -42,8 +42,10 @@ rl.on('line', function (line) {
         }
     }
 
-    console.log('total brightness:' + totalBrightness);
-    console.log('------------------------------------');
+});
+
+rl.on('close', function () {
+    console.log('total brightness: ' + totalBrightness);
 });
 
 var toggle = function (x, y) {

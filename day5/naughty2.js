@@ -5,7 +5,6 @@ var rl = require('readline').createInterface({
 var totalNice = 0;
 
 rl.on('line', function (line) {
-    console.log(line);
     var hasPairs = false;
     var hasLetterRepeat = false;
 
@@ -27,8 +26,9 @@ rl.on('line', function (line) {
     }
     if (hasLetterRepeat && hasPairs) {
         totalNice++;
-        console.log('Total nice:' + totalNice);
     }
+});
 
-    console.log('------------------------------------');
+rl.on('close', function() {
+    console.log('Total nice:' + totalNice);
 });
